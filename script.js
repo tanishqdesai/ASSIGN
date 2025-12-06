@@ -32,3 +32,14 @@ const elements = {
     tags: document.querySelectorAll('.tag')
 };
 
+// State variables
+let state = {
+    selectedFile: null,
+    isUploading: false,
+    serverOnline: false
+};
+
+// INITIALIZATION
+document.addEventListener('DOMContentLoaded', function() {
+    console.log(' Frontend initialized');
+    
