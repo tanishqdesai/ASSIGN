@@ -284,3 +284,29 @@ input[type="text"]:focus {
     background: #f8f9fa;
 }
 
+.file-upload-area:hover,
+.file-upload-area.dragover {
+    border-color: #4776E6;
+    background: #eef2ff;
+}
+
+.file-upload-area i {
+    color: #adb5bd;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.file-upload-area:hover i,
+.file-upload-area.dragover i {
+    color: #4776E6;
+}
+
+.file-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
