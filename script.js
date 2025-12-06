@@ -114,3 +114,14 @@ function setupEventListeners() {
         e.preventDefault();
         window.open('/api/getImage?name=tom', '_blank');
     });
+
+document.getElementById('viewFolder').addEventListener('click', function(e) {
+        e.preventDefault();
+        showMessage('Public folder contains uploaded images', 'info');
+    });
+    
+    document.getElementById('resetImages').addEventListener('click', function(e) {
+        e.preventDefault();
+        resetImages();
+    });
+}
