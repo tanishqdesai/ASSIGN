@@ -359,3 +359,48 @@ async function handleUpload() {
         updateUploadButton();
     }
 }
+
+//Utility functions real quick...
+
+function showMessage(text, type = 'info') {
+    const messageId = 'msg-' + Date.now();
+    
+    // Icon based on type
+    const icons = {
+        success: 'fas fa-check-circle',
+        error: 'fas fa-exclamation-circle',
+        info: 'fas fa-info-circle'
+    };
+    
+    // Colors based on type
+    const colors = {
+        success: '#28a745',
+        error: '#dc3545',
+        info: '#17a2b8'
+    };
+    
+    const messageHTML = `
+        <div class="message ${type}" id="${messageId}">
+            <div class="message-icon" style="color: ${colors[type]}">
+                <i class="${icons[type]}"></i>
+            </div>
+            <div class="message-content">
+                <h4 style="color: ${colors[type]}">${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+                <p>${text}</p>
+            </div>
+        </div>
+    `;
+    
+    // Add message to container
+    elements.messageContainer.insertAdjacentHTML('afterbegin', messageHTML);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        const msgElement = document.getElementById(messageId);
+        if (msgElement) {
+            msgElement.style.animation = 'slideInRight 0.3s ease-out reverse';
+            setTimeout(() => msgElement.remove(), 300);
+        }
+    }, 5000);
+}
+
