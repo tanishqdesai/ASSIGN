@@ -285,3 +285,20 @@ async function handleUpload() {
     elements.uploadProgress.style.display = 'block';
     elements.progressFill.style.width = '0%';
     elements.progressText.textContent = 'Preparing upload...';
+
+// Create form data
+    const formData = new FormData();
+    formData.append('image', state.selectedFile);
+    
+    try {
+        // Create XMLHttpRequest for progress tracking
+        const xhr = new XMLHttpRequest();
+        
+        // Progress event
+        xhr.upload.addEventListener('progress', function(e) {
+            if (e.lengthComputable) {
+                const percentComplete = (e.loaded / e.total) * 100;
+                elements.progressFill.style.width = `${percentComplete}%`;
+                elements.progressText.textContent = `Uploading: ${Math.round(percentComplete)}%`;
+            }
+        });
