@@ -404,3 +404,20 @@ function showMessage(text, type = 'info') {
     }, 5000);
 }
 
+async function resetImages() {
+    if (confirm('This will reset all images to default. Continue?')) {
+        try {
+            // This would require a reset endpoint on the server
+            // For now, just show a message
+            showMessage('Reset functionality would restore original images', 'info');
+        } catch (error) {
+            showMessage('Reset failed: ' + error.message, 'error');
+        }
+    }
+}
+
+// IMAGE ERROR HANDLING
+elements.characterImage.onerror = function() {
+    this.src = '/default.jpg';
+    showMessage('Image not found. Showing default image.', 'error');
+};
