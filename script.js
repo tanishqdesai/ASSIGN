@@ -102,3 +102,9 @@ function setupEventListeners() {
     
     // File input change
     elements.fileInput.addEventListener('change', handleFileSelect);
+
+    // Character name input
+    elements.characterName.addEventListener('input', updateUploadButton);
+    
+    // Upload button click
+    elements.uploadBtn.addEventListener('click', handleUpload);
