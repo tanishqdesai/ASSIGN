@@ -364,3 +364,41 @@ input[type="text"]:focus {
     margin-bottom: 8px;
     color: #495057;
 }
+
+.note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 12px;
+    border-radius: 8px;
+    color: #856404;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.note i {
+    color: #f39c12;
+    margin-top: 2px;
+}
+
+/* MESSAGES */
+#messageContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.message {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    animation: slideInRight 0.3s ease-out;
+    border-left: 5px solid;
+}
