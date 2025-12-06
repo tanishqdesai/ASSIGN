@@ -94,3 +94,11 @@ function setupEventListeners() {
             searchImage(name);
         });
     });
+
+// Browse button click
+    elements.browseBtn.addEventListener('click', function() {
+        elements.fileInput.click();
+    });
+    
+    // File input change
+    elements.fileInput.addEventListener('change', handleFileSelect);
