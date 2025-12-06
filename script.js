@@ -184,3 +184,18 @@ async function searchImage(name) {
         elements.characterImage.src = imageUrl;
         elements.imageUrl.textContent = data.url;
         elements.imageName.textContent = data.url.split('/').pop();
+
+        // Get image size
+        getImageSize(data.url);
+        
+        // Update search input
+        elements.searchInput.value = name;
+        
+        showMessage(`Showing image for: ${name}`, 'success');
+        
+    } catch (error) {
+        console.error('Search error:', error);
+        elements.characterImage.src = '/default.jpg';
+        showMessage(`Error: ${error.message}`, 'error');
+    }
+}
