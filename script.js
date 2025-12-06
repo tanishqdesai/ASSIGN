@@ -54,3 +54,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup drag and drop
     setupDragAndDrop();
 });
+
+// SERVER CHECK
+async function checkServerStatus() {
+    try {
+        const response = await fetch('/api/getImage?name=test');
+        if (response.ok) {
+            state.serverOnline = true;
+            elements.serverStatus.textContent = 'Online';
+            elements.serverStatus.style.color = '#28a745';
+            elements.serverStatus.previousElementSibling.style.background = '#28a745';
+            showMessage('Server connected successfully', 'success');
+        }
+    } catch (error) {
+        state.serverOnline = false;
+        elements.serverStatus.textContent = 'Offline';
+        elements.serverStatus.style.color = '#dc3545';
+        elements.serverStatus.previousElementSibling.style.background = '#dc3545';
+        showMessage('Cannot connect to server. Please start the backend server.', 'error');
+    }
+}
