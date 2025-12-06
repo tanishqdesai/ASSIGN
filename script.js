@@ -177,3 +177,10 @@ async function searchImage(name) {
         if (data.error) {
             throw new Error(data.error);
         }
+
+        // Update image with cache busting
+        const timestamp = new Date().getTime();
+        const imageUrl = `${data.url}?t=${timestamp}`;
+        elements.characterImage.src = imageUrl;
+        elements.imageUrl.textContent = data.url;
+        elements.imageName.textContent = data.url.split('/').pop();
