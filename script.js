@@ -108,3 +108,9 @@ function setupEventListeners() {
     
     // Upload button click
     elements.uploadBtn.addEventListener('click', handleUpload);
+
+    // Footer links
+    document.getElementById('viewApi').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('/api/getImage?name=tom', '_blank');
+    });
