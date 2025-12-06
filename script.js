@@ -85,3 +85,12 @@ function setupEventListeners() {
             handleSearch();
         }
     });
+
+// Quick tag clicks
+    elements.tags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            elements.searchInput.value = name;
+            searchImage(name);
+        });
+    });
