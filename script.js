@@ -22,3 +22,13 @@ const elements = {
     progressFill: document.getElementById('progressFill'),
     progressText: document.getElementById('progressText'),
 
+// Message container
+    messageContainer: document.getElementById('messageContainer'),
+    
+    // Server status
+    serverStatus: document.getElementById('serverStatus'),
+    
+    // Quick tags
+    tags: document.querySelectorAll('.tag')
+};
+
