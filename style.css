@@ -230,3 +230,13 @@ input[type="text"]:focus {
     margin-bottom: 20px;
 }
 
+#characterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover #characterImage {
+    transform: scale(1.05);
+}
