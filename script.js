@@ -74,3 +74,14 @@ async function checkServerStatus() {
         showMessage('Cannot connect to server. Please start the backend server.', 'error');
     }
 }
+
+function setupEventListeners() {
+    // Search button click
+    elements.searchBtn.addEventListener('click', handleSearch);
+    
+    // Enter key in search input
+    elements.searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    });
