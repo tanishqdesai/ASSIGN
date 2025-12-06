@@ -402,3 +402,42 @@ input[type="text"]:focus {
     animation: slideInRight 0.3s ease-out;
     border-left: 5px solid;
 }
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.message.success {
+    border-left-color: #28a745;
+}
+
+.message.error {
+    border-left-color: #dc3545;
+}
+
+.message.info {
+    border-left-color: #17a2b8;
+}
+
+.message-icon {
+    font-size: 1.5rem;
+}
+
+.message-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.message-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
