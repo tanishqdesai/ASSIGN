@@ -260,3 +260,27 @@ input[type="text"]:focus {
     border-radius: 10px;
     border: 1px solid #dee2e6;
 }
+
+.image-info p {
+    margin: 5px 0;
+}
+
+.image-info code {
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #e83e8c;
+}
+
+/* FILE UPLOAD AREA */
+.file-upload-area {
+    border: 3px dashed #adb5bd;
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
