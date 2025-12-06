@@ -302,3 +302,60 @@ async function handleUpload() {
                 elements.progressText.textContent = `Uploading: ${Math.round(percentComplete)}%`;
             }
         });
+
+  // Load event (complete)
+        xhr.addEventListener('load', function() {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                
+                if (data.success) {
+                    // Update progress to 100%
+                    elements.progressFill.style.width = '100%';
+                    elements.progressText.textContent = 'Upload complete!';
+                    
+                    // Show success message
+                    showMessage(` ${data.message}`, 'success');
+                    
+                    // Reset form
+                    resetFileInput();
+                    elements.characterName.value = '';
+                    
+                    // If we're currently viewing this character, refresh the image
+                    const currentChar = elements.currentCharacter.textContent.toLowerCase();
+                    if (currentChar.includes(character.toLowerCase())) {
+                        setTimeout(() => {
+                            searchImage(currentChar);
+                        }, 1000);
+                    }
+                    
+                    // Hide progress bar after delay
+                    setTimeout(() => {
+                        elements.uploadProgress.style.display = 'none';
+                    }, 2000);
+                    
+                } else {
+                    throw new Error(data.message);
+                }
+            } else {
+                throw new Error(`Server error: ${xhr.status}`);
+            }
+        });
+        
+        // Error event
+        xhr.addEventListener('error', function() {
+            throw new Error('Network error. Check server connection.');
+        });
+        
+        // Open and send request
+        xhr.open('POST', `/api/upload?name=${encodeURIComponent(character)}`);
+        xhr.send(formData);
+        
+    } catch (error) {
+        console.error('Upload error:', error);
+        showMessage(` Upload failed: ${error.message}`, 'error');
+        elements.uploadProgress.style.display = 'none';
+    } finally {
+        state.isUploading = false;
+        updateUploadButton();
+    }
+}
