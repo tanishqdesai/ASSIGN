@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Image Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1><i class="fas fa-images"></i> Character Image Manager</h1>
+            <p class="subtitle">Upload and manage character images in real-time</p>
+            <div class="server-status">
+                <span class="status-dot"></span>
+                <span>Server: <span id="serverStatus">Checking...</span></span>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Left Panel: Search & Display -->
+            <section class="panel search-panel">
+                <h2><i class="fas fa-search"></i> Search Character</h2>
+                
+                <div class="form-group">
+                    <label for="searchInput">
+                        <i class="fas fa-user"></i> Enter Character Name:
+                    </label>
+                    <div class="input-with-button">
+                        <input type="text" id="searchInput" placeholder="e.g., tom, jerry, dog">
+                        <button id="searchBtn" class="btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    <div class="hint">
+                        Try: <span class="tag" data-name="tom">tom</span>
+                        <span class="tag" data-name="jerry">jerry</span>
+                        <span class="tag" data-name="dog">dog</span>
+                    </div>
+                </div>
+
+                <!-- Image Display Area -->
+                <div class="image-display">
+                    <div class="image-container">
+                        <img id="characterImage" src="/default.jpg" alt="Character Image">
+                        <div class="image-overlay">
+                            <span id="imageName">default.jpg</span>
+                            <span id="imageSize">0 KB</span>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <p>Currently viewing: <strong id="currentCharacter">tom</strong></p>
+                        <p>Image URL: <code id="imageUrl">/tom.jpg</code></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Upload -->
+            <section class="panel upload-panel">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Image</h2>
+                
+                <div class="form-group">
+                    <label for="characterName">
+                        <i class="fas fa-tag"></i> Character to Update:
+                    </label>
+                    <input type="text" id="characterName" placeholder="Which character? (tom, jerry, dog)">
+                </div>
+
+                <div class="form-group">
+                    <label for="fileInput">
+                        <i class="fas fa-file-image"></i> Select Image File:
+                    </label>
+                    <div class="file-upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                        <p>Drag & drop image here or click to browse</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <button class="btn-secondary" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                    </div>
+                    <div class="file-info" id="fileInfo">
+                        No file selected
+                    </div>
+                </div>
+
+                <!-- Upload Progress -->
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Uploading: 0%</p>
+                </div>
+
+                <!-- Upload Button -->
+                <button id="uploadBtn" class="btn-success" disabled>
+                    <i class="fas fa-upload"></i> Upload Image
+                </button>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> How It Works:</h3>
+                    <ol>
+                        <li>Enter character name (tom, jerry, or dog)</li>
+                        <li>Select an image file (JPG, PNG, GIF)</li>
+                        <li>Click "Upload Image"</li>
+                        <li>Image replaces the old one immediately</li>
+                        <li>Search again to see the new image</li>
+                    </ol>
+                    <p class="note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Note:</strong> Files are saved directly to server's public folder
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Messages / Notifications -->
+        <div id="messageContainer"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <i class="fas fa-code"></i> 
+                Character Image Management System | 
+                <i class="fas fa-server"></i> 
+                Express.js + Multer |
+                <i class="fas fa-laptop-code"></i> 
+                Vanilla JavaScript
+            </p>
+            <p class="footer-links">
+                <a href="#" id="viewApi"><i class="fas fa-network-wired"></i> View API</a>
+                <a href="#" id="viewFolder"><i class="fas fa-folder"></i> View Files</a>
+                <a href="#" id="resetImages"><i class="fas fa-redo"></i> Reset Images</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
