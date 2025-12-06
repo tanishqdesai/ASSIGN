@@ -337,3 +337,30 @@ input[type="text"]:focus {
     font-weight: 600;
     color: #2c3e50;
 }
+
+/* INSTRUCTIONS */
+.instructions {
+    margin-top: 30px;
+    padding: 20px;
+    background: #e8f4fd;
+    border-radius: 10px;
+    border-left: 5px solid #4776E6;
+}
+
+.instructions h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+    color: #495057;
+}
