@@ -42,4 +42,15 @@ let state = {
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', function() {
     console.log(' Frontend initialized');
+    // Initialize server check
+    checkServerStatus();
     
+    // Load default image
+    searchImage('tom');
+    
+    // Setup event listeners
+    setupEventListeners();
+    
+    // Setup drag and drop
+    setupDragAndDrop();
+});
