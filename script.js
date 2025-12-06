@@ -199,3 +199,17 @@ async function searchImage(name) {
         showMessage(`Error: ${error.message}`, 'error');
     }
 }
+
+async function getImageSize(url) {
+    try {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const sizeKB = (blob.size / 1024).toFixed(2);
+        elements.imageSize.textContent = `${sizeKB} KB`;
+    } catch (error) {
+        elements.imageSize.textContent = 'Unknown';
+    }
+}
+
+
+//SEC TION OF FILEHANDLING
