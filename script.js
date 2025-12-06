@@ -125,3 +125,29 @@ document.getElementById('viewFolder').addEventListener('click', function(e) {
         resetImages();
     });
 }
+
+//Drag and Drop
+
+function setupDragAndDrop() {
+    // Drag over event
+    elements.dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.classList.add('dragover');
+    });
+    
+    // Drag leave event
+    elements.dropZone.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        this.classList.remove('dragover');
+    });
+    
+    // Drop event
+    elements.dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('dragover');
+        
+        if (e.dataTransfer.files.length) {
+            handleFileSelect({ target: { files: e.dataTransfer.files } });
+        }
+    });
+}
