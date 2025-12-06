@@ -151,3 +151,29 @@ function setupDragAndDrop() {
         }
     });
 }
+
+
+    //Searching
+
+function handleSearch() {
+    const name = elements.searchInput.value.trim();
+    if (name) {
+        searchImage(name);
+    } else {
+        showMessage('Please enter a character name to search', 'error');
+    }
+}
+
+async function searchImage(name) {
+    try {
+        // Update UI
+        elements.currentCharacter.textContent = name;
+        elements.characterImage.src = '/loading.gif'; // You can add a loading.gif
+        
+        // Make API call
+        const response = await fetch(`/api/getImage?name=${encodeURIComponent(name)}`);
+        const data = await response.json();
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
