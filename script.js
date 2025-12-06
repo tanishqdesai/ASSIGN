@@ -266,3 +266,22 @@ function resetFileInput() {
     elements.fileInfo.textContent = 'No file selected';
     updateUploadButton();
 }
+
+async function handleUpload() {
+    if (!state.selectedFile || state.isUploading || !state.serverOnline) {
+        return;
+    }
+    
+    const character = elements.characterName.value.trim();
+    if (!character) {
+        showMessage('Please enter a character name', 'error');
+        return;
+    }
+    
+    state.isUploading = true;
+    updateUploadButton();
+    
+    // Show progress bar
+    elements.uploadProgress.style.display = 'block';
+    elements.progressFill.style.width = '0%';
+    elements.progressText.textContent = 'Preparing upload...';
