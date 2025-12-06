@@ -213,3 +213,56 @@ async function getImageSize(url) {
 
 
 //SEC TION OF FILEHANDLING
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    
+    if (!file) {
+        return;
+    }
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        showMessage('Please select an image file (JPG, PNG, GIF)', 'error');
+        resetFileInput();
+        return;
+    }
+    
+    // Validate file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+        showMessage('File too large. Maximum size is 5MB', 'error');
+        resetFileInput();
+        return;
+    }
+    
+    // Update state
+    state.selectedFile = file;
+    
+    // Update UI
+    const fileSize = (file.size / 1024).toFixed(2);
+    elements.fileInfo.innerHTML = `
+        <strong>✓ File Selected:</strong><br>
+        <span style="color: #28a745;">${file.name}</span><br>
+        Size: ${fileSize} KB | Type: ${file.type}
+    `;
+    
+    // Update upload button
+    updateUploadButton();
+    
+    showMessage(`File ready: ${file.name}`, 'success');
+}
+
+function updateUploadButton() {
+    const hasFile = state.selectedFile !== null;
+    const hasName = elements.characterName.value.trim() !== '';
+    const canUpload = hasFile && hasName && !state.isUploading && state.serverOnline;
+    
+    elements.uploadBtn.disabled = !canUpload;
+}
+
+function resetFileInput() {
+    elements.fileInput.value = '';
+    state.selectedFile = null;
+    elements.fileInfo.textContent = 'No file selected';
+    updateUploadButton();
+}
