@@ -207,3 +207,9 @@ input[type="text"]:focus {
     cursor: pointer;
     transition: all 0.2s ease;
 }
+
+.tag:hover {
+    background: #4776E6;
+    color: white;
+    transform: scale(1.05);
+}
