@@ -310,3 +310,30 @@ input[type="text"]:focus {
     color: #495057;
 }
 
+/* PROGRESS BAR */
+.upload-progress {
+    margin: 20px 0;
+    display: none;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00b09b, #96c93d);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+#progressText {
+    text-align: center;
+    font-weight: 600;
+    color: #2c3e50;
+}
